@@ -1,14 +1,15 @@
 """Console script for imgx."""
 import sys
 import click
+from .process_module import ProcessModule
 
 
 @click.command()
-def main(args=None):
-    """Console script for imgx."""
-    click.echo("Replace this message by putting your code into "
-               "imgx.cli.main")
-    click.echo("See click documentation at https://click.palletsprojects.com/")
+@click.argument('task',type=str)
+def main(task:str):
+    print(f"Task: {task}")
+    imgx_process = ProcessModule()
+    imgx_process.read_metadata_and_write_to_file()
     return 0
 
 
